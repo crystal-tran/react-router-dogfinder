@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from "react";
 import { useParams, Navigate } from 'react-router-dom';
 import DogDetails from './DogDetails';
 
@@ -18,22 +19,30 @@ const BASE_DOG_URL = "http://localhost:5001/dogs";
 
 function DogFinder({ dogNames }) {
   const { dogName } = useParams();
+  const [dogData, setDogData] = useState();
 
   if (!(dogNames.includes(dogName))) {
     return <Navigate to="/" />;
   }
 
-  let dogData;
-  async function getDog() {
+  /** Get data for dog being found from server and set state of dogData */
+  async function getDogData() {
     const response = await fetch(BASE_DOG_URL);
     const data = await response.json();
-    dogData = data;
+
+    const dogDataResult = (data.filter(dog => dog.src === dogName))[0]
+    setDogData(dogDataResult);
   }
 
+  if (dogData === undefined) {
+    getDogData();
+  }
 
   return (
     <div>
-      <DogDetails dogName={dogName} dogData={dogData} />
+      {dogData &&
+        <DogDetails dogName={dogName} dogData={dogData} />
+      }
     </div>
   );
 }

@@ -1,7 +1,6 @@
 import './App.css';
 import Nav from './Nav';
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
-//TODO: ask about VSCode red underlining
 import DogList from './DogList';
 import DogFinder from './DogFinder';
 
