@@ -1,8 +1,18 @@
 import React from 'react';
 
-/** Component to show details for a dog */
+/** Component to show details for a dog
+ *
+ * Props: dogName
+ *
+ * State: None
+*/
 
-function DogDetails(){
+function DogDetails({ dogName }){
+
+  return(
+    <div></div>
+
+  );
 
 }
 

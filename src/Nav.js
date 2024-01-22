@@ -21,7 +21,7 @@ function Nav({ dogNames }){
         <li><Link to="/">Home - Dog List</Link></li>
         {dogNames.map(dogName =>
             <li key={dogName}>
-              <Link to="/dogs/{dogName}">{dogName}</Link>
+              <Link to={`/dogs/${dogName}`}>{dogName}</Link>
             </li>
         )}
       </ul>

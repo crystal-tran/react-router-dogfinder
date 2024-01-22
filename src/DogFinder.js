@@ -1,5 +1,8 @@
 import React from 'react';
+import { useParams, Navigate } from 'react-router-dom';
 import DogDetails from './DogDetails';
+
+const BASE_DOG_URL = "http://localhost:5001/dogs";
 
 /** Component to find a dog from url param and show its details
  *
@@ -20,8 +23,19 @@ function DogFinder({ dogNames }) {
     return <Navigate to="/" />;
   }
 
+  let dogData;
+  async function getDog() {
+    const response = await fetch(BASE_DOG_URL);
+    const data = await response.json();
+    dogData = data;
+  }
+
+
   return (
-    <DogDetails dogName={dogName} />
+    <div>
+      <DogDetails dogName={dogName} dogData={dogData} />
+      <button onClick={getDog}>Get Dog!</button>
+    </div>
   );
 }
 

@@ -1,8 +1,9 @@
 import './App.css';
 import Nav from './Nav';
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+//TODO: ask about VSCode red underlining
 import DogList from './DogList';
-import DogDetails from './DogDetails';
+import DogFinder from './DogFinder';
 
 const DOG_NAMES = ['duke', 'perry', 'whiskey']
 
@@ -14,7 +15,7 @@ const DOG_NAMES = ['duke', 'perry', 'whiskey']
  * States:
  *
  *
- * App -> { Nav, DogList, DogDetails }
+ * App -> { Nav, DogFinder, DogDetails }
  */
 
 function App({ dogNames = DOG_NAMES }) {
@@ -24,7 +25,7 @@ function App({ dogNames = DOG_NAMES }) {
         <Nav dogNames={dogNames} />
         <Routes>
           <Route path="/" element={<DogList dogNames={dogNames} />} />
-          <Route path="/dogs/:name" element={<DogDetails />} />
+          <Route path="/dogs/:dogName" element={<DogFinder dogNames={dogNames}/>} />
           <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </BrowserRouter>
