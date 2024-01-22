@@ -34,7 +34,6 @@ function DogFinder({ dogNames }) {
   return (
     <div>
       <DogDetails dogName={dogName} dogData={dogData} />
-      <button onClick={getDog}>Get Dog!</button>
     </div>
   );
 }
