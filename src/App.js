@@ -19,7 +19,6 @@ const BASE_DOG_URL = "http://localhost:5001/dogs";
 
 function App() {
   const [dogsData, setDogsData] = useState();
-  console.log("App dogsData:", dogsData);
 
   /** Get data for dogs being found from server and set state of dogsData */
   async function getDogsData() {

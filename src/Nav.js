@@ -11,6 +11,7 @@ import { Link } from 'react-router-dom';
  *
  * App -> Nav
 */
+//TODO: NavLinks can be used instead of Nav
 
 function Nav({ dogsData }) {
   return (

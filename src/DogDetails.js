@@ -16,7 +16,9 @@ function DogDetails({ dogData }) {
       <h2>Age: {dogData.age}</h2>
       <img
         className="DogDetails-img"
-        src={process.env.PUBLIC_URL + `/${dogData.src}.jpg`} />
+        src={`/${dogData.src}.jpg`}
+        alt={dogData.src}
+        />
       <ul>
         {dogData.facts.map((fact, idx) =>
           <li key={`fact-${idx}`}>{fact}</li>

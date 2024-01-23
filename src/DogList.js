@@ -20,12 +20,13 @@ function DogList({ dogsData }) {
       <ul>
         {dogsData.map(d =>
           <li key={d.src}>
-            <Link to={`/dogs/${d.src}`}>{d.name}</Link>
-            <br />
-            <img
-              className="DogList-img"
-              src={process.env.PUBLIC_URL + `/${d.src}.jpg`} />
-            <br />
+            <Link to={`/dogs/${d.src}`}>{d.name}
+              <img
+                className="DogList-img"
+                src={`/${d.src}.jpg`}
+                alt={d.src}
+              />
+            </Link>
           </li>
         )}
       </ul>
