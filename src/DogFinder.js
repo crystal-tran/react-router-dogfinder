@@ -11,7 +11,7 @@ const BASE_DOG_URL = "http://localhost:5001/dogs";
  * - dogNames ["name1", "name2", ...]
  *
  * States:
- * - None
+ * - dogData an object like { name, age, src, facts,...}
  *
  * App -> DogFinder -> DogDetails
  *
@@ -30,18 +30,20 @@ function DogFinder({ dogNames }) {
     const response = await fetch(BASE_DOG_URL);
     const data = await response.json();
 
-    const dogDataResult = (data.filter(dog => dog.src === dogName))[0]
+    const dogDataResult = (data.filter(dog => dog.src === dogName))[0];
     setDogData(dogDataResult);
   }
 
-  if (dogData === undefined) {
+  if (dogData === undefined || dogName !== dogData.src) {
     getDogData();
   }
 
   return (
     <div>
-      {dogData &&
-        <DogDetails dogName={dogName} dogData={dogData} />
+      {
+        dogData
+          ? <DogDetails dogName={dogName} dogData={dogData} />
+          : <h2>Woof! Loading Dog Details...</h2>
       }
     </div>
   );

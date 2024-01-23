@@ -14,7 +14,7 @@ const DOG_NAMES = ['duke', 'perry', 'whiskey']
  * States:
  *
  *
- * App -> { Nav, DogFinder, DogDetails }
+ * App -> { Nav, DogList, DogFinder }
  */
 
 function App({ dogNames = DOG_NAMES }) {
