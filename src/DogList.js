@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useState } from "react";
 import "./DogList.css"
 
@@ -35,15 +36,19 @@ function DogList({ dogNames }) {
     <div className="DogList">
       <h2>Dog List:</h2>
       <ul>
-        {dogData.map(d =>
-          <li key={d.src}>
-            <img
-              className="DogList-img"
-              src={process.env.PUBLIC_URL + `/${d.src}.jpg`} />
-            <br />
-            {d.name}
-          </li>
-        )}
+      {
+        dogData
+          ? dogData.map(d =>
+            <li key={d.src}>
+              <img
+                className="DogList-img"
+                src={process.env.PUBLIC_URL + `/${d.src}.jpg`} />
+              <br />
+              <Link to={`/dogs/${d.src}`}>{d.name}</Link>
+            </li>
+          )
+          : <h2>Woof! Loading Dog Data...</h2>
+      }
       </ul>
     </div>
   );
