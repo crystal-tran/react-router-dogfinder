@@ -8,7 +8,7 @@ const BASE_DOG_URL = "http://localhost:5001/dogs";
 /** Dog list component to show all of the dog info
  *
  * Props:
- * - dogNames ["name1", "name2", ...]
+ * - dogsData [{ name, age, src, facts }, ...]
  *
  * States:
  * - None
@@ -16,29 +16,15 @@ const BASE_DOG_URL = "http://localhost:5001/dogs";
  *
  */
 
-function DogList({ dogNames }) {
-  const [dogData, setDogData] = useState();
-  console.log("dogData:", dogData);
+function DogList({ dogsData }) {
 
-
-  /** Get data for dog being found from server and set state of dogData */
-  async function getDogData() {
-    const response = await fetch(BASE_DOG_URL);
-    const data = await response.json();
-    setDogData(data);
-  }
-
-  if (dogData === undefined) {
-    getDogData();
-  }
+  console.log("DogList dogData:", dogsData);
 
   return (
     <div className="DogList">
       <h2>Dog List:</h2>
       <ul>
-      {
-        dogData
-          ? dogData.map(d =>
+      {dogsData.map(d =>
             <li key={d.src}>
               <img
                 className="DogList-img"
@@ -46,9 +32,7 @@ function DogList({ dogNames }) {
               <br />
               <Link to={`/dogs/${d.src}`}>{d.name}</Link>
             </li>
-          )
-          : <h2>Woof! Loading Dog Data...</h2>
-      }
+      )}
       </ul>
     </div>
   );

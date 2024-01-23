@@ -3,7 +3,7 @@ import React from 'react';
 /** Component to show details for a dog
  *
  * Props:
- * - dogData { name, age, src, facts,...}
+ * - dogData { name, age, src, facts }
  *
  * State: None
 */

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom'
  *
  * Props:
  * - dogNames ["name1", "name2", ...]
+ * - dogsData an object like [{ name, age, src, facts,...}]
  *
  * States:
  * -None
