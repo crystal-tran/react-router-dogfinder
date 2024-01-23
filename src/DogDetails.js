@@ -1,4 +1,5 @@
 import React from 'react';
+import './DogDetails.css';
 
 /** Component to show details for a dog
  *
@@ -9,13 +10,13 @@ import React from 'react';
 */
 
 function DogDetails({ dogData }) {
-
-  console.log("Dog details. dogData:", dogData);
-
   return (
     <div className="DogDetails">
       <h1>{dogData.name}</h1>
       <h2>Age: {dogData.age}</h2>
+      <img
+        className="DogDetails-img"
+        src={process.env.PUBLIC_URL + `/${dogData.src}.jpg`} />
       <ul>
         {dogData.facts.map((fact, idx) =>
           <li key={`fact-${idx}`}>{fact}</li>
@@ -23,7 +24,6 @@ function DogDetails({ dogData }) {
       </ul>
     </div>
   );
-
 }
 
 export default DogDetails;

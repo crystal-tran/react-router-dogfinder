@@ -1,11 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 
 /** Nav bar with links to dog list and details routes
  *
  * Props:
- * - dogNames ["name1", "name2", ...]
- * - dogsData an object like [{ name, age, src, facts,...}]
+ * - dogsData an array like [{ name, age, src, facts,...}]
  *
  * States:
  * -None
@@ -13,23 +12,20 @@ import { Link } from 'react-router-dom'
  * App -> Nav
 */
 
-
-function Nav({ dogNames }){
-  return(
+function Nav({ dogsData }) {
+  return (
     <div className="Nav">
       <h2>Navigation:</h2>
       <ul>
-        <li><Link to="/">Home - Dog List</Link></li>
-        {dogNames.map(dogName =>
-            <li key={dogName}>
-              <Link to={`/dogs/${dogName}`}>{dogName}</Link>
-            </li>
+        <li><Link to="/">Home</Link></li>
+        {dogsData.map(d =>
+          <li key={d.src}>
+            <Link to={`/dogs/${d.src}`}>{d.name}</Link>
+          </li>
         )}
       </ul>
     </div>
   );
-
-
 }
 
 export default Nav;
